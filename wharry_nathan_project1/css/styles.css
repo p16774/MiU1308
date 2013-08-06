@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+
+*********************
+Author: Nathan Wharry
+Title: Project 4 - D&D Character Sheet - Stylesheet
+Term: VFW 1307
+*********************
+
+*/
+
+html {
+	background: url(../img/bg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-bacground-size: cover;
+	background-size: cover;
+}
+
+body {
+	color: #ffffff;
+}
+
+h1 {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size: 22px;
+	text-align: center;
+}
+
+p.main {
+	font-family:"Times New Roman", Times, serif;
+	font-size: 16px;
+	text-align: justify;
+	border: 1px solid #fff;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+form li {
+	list-style-type: none;
+}
+
+form ul {
+	margin-left: -20px;
+}
+
+img.addchar {
+	width: 300px;
+}
+
+span.weight {
+	color: #FFFF00;
+}
+
+a {
+	color: #FFFF00;
+}
+
+#errors {
+	color: #FFFF00;
+}
+
+div#charData ul {
+	padding: 0px 20px 10px 10px;
+	list-style-type: none;
+}
+
+div#charData ul ul{
+	padding-top: 20px;
+	border-bottom: 1px solid #FFFF00;
+}
+
+

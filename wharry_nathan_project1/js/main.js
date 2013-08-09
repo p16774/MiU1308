@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Functions for creation of elements **********
 
 	// getElementById Function
-	function $(x) {
+	function ge(x) {
 		
 		var myElement = document.getElementById(x);
 		return myElement;
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		// define needed variables		
 		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Half-Orc", "Halfling"],
 			formTag = document.getElementsByTagName("form"),
-			selectLi = $("select_race"),
+			selectLi = ge("select_race"),
 			makeSelect = document.createElement("select");
 			makeSelect.setAttribute("id", "char_race");
 			
@@ -55,8 +55,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Display Weight Slider Value on the screen. **********
 	
-	var weight = $("char_weigh");
-		span = $("number");
+	var weight = ge("char_weigh"),
+		span = ge("number"),
+		searchBox = ge("char_search");
+		
 	
 	
 	var displayWeight = function() {
@@ -67,7 +69,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Store Data variables and functions **********
 	
-	var addChar = $("char_submit");
+	var addChar = ge("char_submit");
 	
 	// find selected radio button (gender)
 	function genSelect() {
@@ -112,15 +114,15 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 		// gather our form fields and save our data
 		var item				= {};
-			item.char_name		= ["Name", $("char_name").value];
-			item.char_race		= ["Race", $("char_race").value];
+			item.char_name		= ["Name", ge("char_name").value];
+			item.char_race		= ["Race", ge("char_race").value];
 			item.char_gen		= ["Gender", genValue];
-			item.char_class		= ["Class", $("char_class").value];
-			item.char_age		= ["Age", $("char_age").value];
-			item.char_weigh		= ["Weight", $("char_weigh").value];
-			item.char_birth		= ["BirthDay", $("char_birth").value];
-			item.char_desc		= ["Description", $("char_desc").value];
-			item.version		= ["Version", $("version").value];	
+			item.char_class		= ["Class", ge("char_class").value];
+			item.char_age		= ["Age", ge("char_age").value];
+			item.char_weigh		= ["Weight", ge("char_weigh").value];
+			item.char_birth		= ["BirthDay", ge("char_birth").value];
+			item.char_desc		= ["Description", ge("char_desc").value];
+			item.version		= ["Version", ge("version").value];	
 			
 			// variablize our stringify
 			itemData = JSON.stringify(item);
@@ -150,21 +152,21 @@ window.addEventListener("DOMContentLoaded", function() {
 			case "on":
 				
 				// hide the form and show the links
-				$('char_form').style.display = "none";
-				$('delChar').style.display = "inline";
-				$('dispChar').style.display = "none";
-				$('newChar').style.display = "inline";
+				ge('char_form').style.display = "none";
+				ge('delChar').style.display = "inline";
+				ge('dispChar').style.display = "none";
+				ge('newChar').style.display = "inline";
 				
 				break;
 				
 			case "off":
 
 				// hide the form and show the links
-				$('char_form').style.display = "block";
-				$('delChar').style.display = "inline";
-				$('dispChar').style.display = "inline";
-				$('newChar').style.display = "none";
-				$('charData').style.display = "none";
+				ge('char_form').style.display = "block";
+				ge('delChar').style.display = "inline";
+				ge('dispChar').style.display = "inline";
+				ge('newChar').style.display = "none";
+				ge('charData').style.display = "none";
 
 				break;
 				
@@ -179,7 +181,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Display Data variables and functions **********
 	
-	var displayChar = $("dispChar");
+	var displayChar = ge("dispChar");
 	
 	var showChar = function () {
 		
@@ -217,7 +219,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				document.body.appendChild(makeDiv);
 				makeDiv.appendChild(makeList);	
 
-				$('charData').style.display = "block";
+				ge('charData').style.display = "block";
 								
 				// Loop through localStorage
 				for(var i=0, j=localStorage.length; i<j; i++) {
@@ -340,8 +342,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			toggleControls("off");
 			
 			// populate our data with the item to be edited
-			$('char_name').value = item.char_name[1];
-			$('char_race').value = item.char_race[1];
+			ge('char_name').value = item.char_name[1];
+			ge('char_race').value = item.char_race[1];
 			
 			var radios = document.forms[0].char_gen;
 			
@@ -363,17 +365,17 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 			};
 
-			$('char_class').value = item.char_class[1];
-			$('char_age').value = item.char_age[1];
-			$('char_weigh').value = item.char_weigh[1];
-			$('number').innerHTML = item.char_weigh[1]; // remember to change our display to show the correct slide position
-			$('char_birth').value = item.char_birth[1];
-			$('char_desc').value = item.char_desc[1];
+			ge('char_class').value = item.char_class[1];
+			ge('char_age').value = item.char_age[1];
+			ge('char_weigh').value = item.char_weigh[1];
+			ge('number').innerHTML = item.char_weigh[1]; // remember to change our display to show the correct slide position
+			ge('char_birth').value = item.char_birth[1];
+			ge('char_desc').value = item.char_desc[1];
 			
 			// change our submit button properties to edit data
 			//addChar.removeEventListener("click", valChar);
-			$('char_submit').value = "Edit Character";
-			var editSubmit = $('char_submit');
+			ge('char_submit').value = "Edit Character";
+			var editSubmit = ge('char_submit');
 			
 			// create new event listener to run a new edit function and save key value for proper character editing
 			//editSubmit.addEventListener("click", valChar);
@@ -415,10 +417,10 @@ window.addEventListener("DOMContentLoaded", function() {
 		function valChar(e) {
 			
 			// elements we need to validate in our form
-			var getCharName = $("char_name");
-			var getCharRace = $("char_race");
-			var getCharClass = $("char_class");
-			var getCharWeight = $("char_weigh");
+			var getCharName = ge("char_name");
+			var getCharRace = ge("char_race");
+			var getCharClass = ge("char_class");
+			var getCharWeight = ge("char_weigh");
 			
 			// reset our error messages array
 			errMsg.innerHTML = "";
@@ -498,7 +500,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Clear Data variables and functions **********
 	
-	var clearChar = $("delChar");
+	var clearChar = ge("delChar");
 	
 	var deleteChar = function() {
 		
@@ -517,9 +519,10 @@ window.addEventListener("DOMContentLoaded", function() {
 		
 		};
 		
+		
 	// Execute Needed Functions and declare variables
 	var genValue,
-		errMsg = $('errors');
+		errMsg = ge('errors');
 		
 	selRace();
 	
@@ -529,9 +532,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	displayChar.addEventListener("click", showChar); // display data function
 	clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
 	weight.addEventListener("change", displayWeight); // display weight slider value
-	
-	
-
 
 
 }); // End DOM Loaded Function

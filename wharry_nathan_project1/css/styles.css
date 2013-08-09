@@ -5,8 +5,8 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 4 - D&D Character Sheet - Stylesheet
-Term: VFW 1307
+Title: Project 1 - D&D Character Sheet - Stylesheet
+Term: MiU 1308
 *********************
 
 */
@@ -77,15 +77,15 @@ img.addchar {
 }
 
 span.weight {
-	color: #FFFF00;
+	color: #FFFF8c;
 }
 
 a {
-	color: #FFFF00;
+	color: #FFFF8c;
 }
 
 #errors {
-	color: #FFFF00;
+	color: #FFFF8c;
 }
 
 div#charData ul {
@@ -95,7 +95,11 @@ div#charData ul {
 
 div#charData ul ul{
 	padding-top: 20px;
-	border-bottom: 1px solid #FFFF00;
+	border-bottom: 1px solid #FFFF8c;
+}
+
+.browse {
+	text-decoration: none;
 }
 
 

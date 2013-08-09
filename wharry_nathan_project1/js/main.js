@@ -4,8 +4,8 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 4 - D&D Character Sheet - Javascript
-Term: VFW 1307
+Title: Project 1 - D&D Character Sheet - Javascript
+Term: MiU 1308
 *********************
 
 */

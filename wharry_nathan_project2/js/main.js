@@ -25,7 +25,12 @@ window.addEventListener("DOMContentLoaded", function() {
 			// run our display data function			
 			showChar();
 			
-		}; // end if statement
+		} else if (display === "#clear") {
+			
+			// run clear data function
+			deleteChar();
+			
+		}; // end if/else statement
 		
 	}; // end chooseDisplay function
 
@@ -52,6 +57,35 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 			var makeOption = document.createElement("option");
 			var optText = races[i];
+			
+			// Create our Option Tags
+			makeOption.setAttribute("value", optText);
+			makeOption.innerHTML = optText;
+			
+			// Attach Option into Select Element
+			makeSelect.appendChild(makeOption);
+			
+		};
+		
+		selectLi.appendChild(makeSelect);		
+			
+	}; // end selRace function
+	
+	// Create Select Element for Class Selection
+	function selClass() {
+		
+		// define needed variables		
+		var classes = ["--Choose A Class--", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Warlord", "Wizard", "------", "Avenger", "Barbarian", "Bard", "Druid", "Invoker", "Shaman", "Sorcerer", "Warden", "------", "Ardent", "Battlemind", "Monk", "Psion", "Runepriest", "Seeker"],
+			formTag = document.getElementsByTagName("form"),
+			selectLi = ge("select_class"),
+			makeSelect = document.createElement("select");
+			makeSelect.setAttribute("id", "char_class");
+			
+		// Loop through races array and make our options
+		for(var i=0, j=classes.length; i<j; i++) {
+			
+			var makeOption = document.createElement("option");
+			var optText = classes[i];
 			
 			// Create our Option Tags
 			makeOption.setAttribute("value", optText);
@@ -517,14 +551,29 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 			} else {
 				
-				localStorage.clear();
-				alert("All characters removed.");
-				window.location.assign("index.html");
-				return false;
+				// make sure we really want to delete all data
+				var ask = confirm("Are you sure you want to clear the entire character database?");
 				
-			};
+				// check conditional to delete or not delete
+				if (ask) {
+					
+					localStorage.clear();
+					alert("Database Cleared! All characters removed.");
+					window.location.assign("index.html");
+					return false;
+					
+				} else {
+					
+					//alert that our data has not been deleted
+					alert("Database Saved! No characters removed.");
+					window.location.assign("index.html");
+					return false;
+					
+				}; // end confirm if statement
+								
+			}; // end else statement to check for data
 		
-		};
+		}; // end delete database function
 		
 	
 	// Execute the search parameters under the search page
@@ -545,6 +594,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		errMsg = ge('errors');
 		
 	selRace();
+	selClass();
 	chooseDisplay(display);
 	
 

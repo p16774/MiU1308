@@ -13,12 +13,6 @@ Term: MiU 1308
 // Wait for DOM to fully load
 window.addEventListener("DOMContentLoaded", function() {
 	
-	// Define browse options
-	searchItem = window.location.hash;
-	
-	alert(searchItem);
-	
-	
 	// Browse by Name
 	function browseName() {
 		

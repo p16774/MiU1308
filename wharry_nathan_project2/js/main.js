@@ -16,22 +16,61 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Functions for creation of elements **********
 	
 	// pull hash if available
-	var display = window.location.hash;			
-	
+	var display = window.location.hash,
+		current_path = window.location.pathname.split('/').pop();
+				
 	function chooseDisplay(display) {
 		
-		if (display === "#disp") {
+		switch(display) {
+			
+			case "#disp":
 						
-			// run our display data function			
-			showChar();
+				// run our display data function			
+				showChar();
+				
+				break;
 			
-		} else if (display === "#clear") {
+			case "#clear":
 			
-			// run clear data function
-			deleteChar();
+				// run clear data function
+				deleteChar();
+				
+				break;
 			
-		}; // end if/else statement
-		
+			case "#name":
+				
+				// check current loaded page and redirect as needed
+				if (current_path != "browse.html") {
+					
+					// navigate to the browse page
+					window.location.assign("browse.html#name");
+					
+				} else {
+					
+					// run browse function
+					browseName();
+					
+				}; // end if statement to validate current page
+				
+				
+				break;
+			
+			default:
+			
+				if(current_path === "additem.html") {
+					
+					selRace();
+					selClass();
+					addChar.addEventListener("click", valChar); // add new character data function
+					weight.addEventListener("change", displayWeight); // display weight slider value
+
+					
+				}; // end if to determine page
+			
+				break;
+			
+		}; // end switch display
+			
 	}; // end chooseDisplay function
 
 	// getElementById Function
@@ -46,7 +85,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	function selRace() {
 		
 		// define needed variables		
-		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Half-Orc", "Halfling"],
+		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Gnomes", "Half-Elf", "Half-Orc", "Halfling"],
 			formTag = document.getElementsByTagName("form"),
 			selectLi = ge("select_race"),
 			makeSelect = document.createElement("select");
@@ -587,22 +626,26 @@ window.addEventListener("DOMContentLoaded", function() {
 		
 		
 	};
+	
+	// Browse by Name
+	function browseName() {
+		
+		//develop proper sorting functions
+				
+		
+	};
 		
 		
 	// Execute Needed Functions and declare variables
 	var genValue,
 		errMsg = ge('errors');
 		
-	selRace();
-	selClass();
 	chooseDisplay(display);
 	
 
 	// Event Listener Calls
-	addChar.addEventListener("click", valChar); // add new character data function
 	displayChar.addEventListener("click", showChar); // display data function
 	clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
-	weight.addEventListener("change", displayWeight); // display weight slider value
 	//searchBox.addEventListener("click", charSearch); // run the search parameters
 	
 

@@ -21,7 +21,9 @@ Term: MiU 1308
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     
     <!--Additional Document Links-->
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/dnd.min.css">
     
 	<title>D&D Character Sheet Browse Results</title>
     
@@ -34,7 +36,7 @@ Term: MiU 1308
         <a href="additem.html" target="_self" class="browse"><span class="heading">Add</span></a>
         <a href="additem.html#disp" id="navDisp" class="browse"><span class="heading">Display</span></a>
         <a href="search.html" id="navSearch" class="browse"><span class="heading">Search</span></a>
-        <a href="additem.html#clear" id="navClear" class="browse"><span class="heading">Clear</span></a>
+        <a href="info.html" id="navClear" class="browse"><span class="heading">Info</span></a>
 </nav>
     	<header>
       	  <img src="img/heading.png" alt="Heading image" width="100%" />
@@ -42,9 +44,10 @@ Term: MiU 1308
         
         <p class="main">No characters found with selected criteria.</p>
     
-    
-		<script type="text/javascript" src="js/json.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>    
+	<script type="text/javascript" src="js/json.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     
     </body>
     

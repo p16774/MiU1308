@@ -59,10 +59,6 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 				if(current_path === "additem.html") {
 					
-					selRace();
-					selClass();
-					addChar.addEventListener("click", valChar); // add new character data function
-					weight.addEventListener("change", displayWeight); // display weight slider value
 
 					
 				}; // end if to determine page
@@ -266,7 +262,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var showChar = function () {
 				
 		// toggle our display
-		toggleControls("on");
+		//toggleControls("on");
 		
 		// remove all display data divs
 		if (document.getElementById('charData') != null) {
@@ -292,11 +288,12 @@ window.addEventListener("DOMContentLoaded", function() {
 							
 				//Write function to the browser
 				var makeDiv = document.createElement("div"),
-					makeList = document.createElement("ul");
+					makeList = document.createElement("ul"),
+					dispPage = ge('charDisplay');
 										
 				// write our data	
 				makeDiv.setAttribute("id", "charData");
-				document.body.appendChild(makeDiv);
+				dispPage.appendChild(makeDiv);
 				makeDiv.appendChild(makeList);	
 
 				ge('charData').style.display = "block";
@@ -419,7 +416,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				item = JSON.parse(value);
 							
 			// turn our toggle controls off to display form
-			toggleControls("off");
+			//toggleControls("off");
 			
 			// populate our data with the item to be edited
 			ge('char_name').value = item.char_name[1];
@@ -640,12 +637,16 @@ window.addEventListener("DOMContentLoaded", function() {
 	var genValue,
 		errMsg = ge('errors');
 		
-	chooseDisplay(display);
-	
+		selRace();
+		selClass();
+		
+		
+			
 
 	// Event Listener Calls
 	displayChar.addEventListener("click", showChar); // display data function
-	clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
+	//clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
+	addChar.addEventListener("click", valChar); // add new character data function
 	//searchBox.addEventListener("click", charSearch); // run the search parameters
 	
 

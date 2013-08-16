@@ -135,30 +135,13 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 	};
 		
-	
-	// Display Weight Slider Value on the screen. **********
-	
-	var weight = ge("char_weigh"),
-		span = ge("number"),
-		searchBox = ge("img_search");		
-	
-	
-	var displayWeight = function() {
 		
-		span.innerHTML = weight.value;	
-		
-		};	
-	
-	// Store Data variables and functions **********
-	
-	var addChar = ge("char_submit");
-	
 	// find selected radio button (gender)
 	function genSelect() {
 		
 		// declare variables
-		var radios = document.forms[0].char_gen;
-		
+		var radios = document.forms[1].char_gen;
+				
 		// loop through to get selected radio button
 		for (var i=0; i<radios.length; i++) {
 			
@@ -175,10 +158,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	};
 	
 	function storeChar(key) {
-		
+				
 		// pull in our argument for editing characters
 		if (!key) {
-			
+						
 			// create random number for unique id in local storage
 			var id = Math.floor(Math.random()*10000000);
 			var edit = false;
@@ -207,8 +190,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			item.version		= ["Version", ge("version").value];	
 			
 			// variablize our stringify
-			itemData = JSON.stringify(item);
-						
+			var itemData = JSON.stringify(item);
+									
 		// save our data into local storage
 		localStorage.setItem(id, itemData);
 		
@@ -530,10 +513,10 @@ window.addEventListener("DOMContentLoaded", function() {
 			};
 			
 			// Class Validation
-			if (getCharClass.value === "") {
+			if (getCharClass.value === "--Choose A Class--" || getCharClass.value === "------") {
 				
 				// class error message
-				var classError = "Please enter a character class.";
+				var classError = "Please choose a character class.";
 				getCharClass.style.border = "1px solid #FFFF00";
 				errMessages.push(classError);
 				
@@ -567,6 +550,8 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 			} else {
 				
+				alert('form has validated');
+				
 				// run our store data function if field validate
 				storeChar(this.key);
 				
@@ -577,7 +562,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Clear Data variables and functions **********
 	
-	var clearChar = ge("navClear");
+	var clearChar = ge("charClearInfo");
 	
 	var deleteChar = function() {
 		
@@ -617,11 +602,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		
 		alert('you made it here');
 		
-		// navigate to the search page
-		window.location.assign("search.html");
-
-		
-		
 	};
 	
 	// Browse by Name
@@ -640,12 +620,17 @@ window.addEventListener("DOMContentLoaded", function() {
 		selRace();
 		selClass();
 		
+	// Search Feature to be designed. **********
+	
+	var searchBox = ge("charSearchBtn");		
+	
+	// Store Data variables and functions **********
+	
+	var addChar = ge("charSubmitBtn");		
 		
-			
-
 	// Event Listener Calls
 	displayChar.addEventListener("click", showChar); // display data function
-	//clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
+	clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
 	addChar.addEventListener("click", valChar); // add new character data function
 	//searchBox.addEventListener("click", charSearch); // run the search parameters
 	

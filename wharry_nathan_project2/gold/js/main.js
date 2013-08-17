@@ -248,9 +248,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		//toggleControls("on");
 		
 		// remove all display data divs
-		if (document.getElementById('charData') != null) {
+		if (document.getElementById('dispData') != null) {
 			
-			remDiv = document.getElementById('charData');
+			remDiv = document.getElementById('dispData');
 			remDiv.parentNode.removeChild(remDiv);
 			
 		};
@@ -267,27 +267,31 @@ window.addEventListener("DOMContentLoaded", function() {
 				// refresh page to load data that was just added
 				showChar();
 				
-			} else {
-							
-				//Write function to the browser
-				var makeDiv = document.createElement("div"),
-					makeList = document.createElement("ul"),
+			} else {   
+				
+				// create our elements that will be used
+				var dispDivMain = document.createElement("div"),
 					dispPage = ge('charDisplay');
 										
-				// write our data	
-				makeDiv.setAttribute("id", "charData");
-				dispPage.appendChild(makeDiv);
-				makeDiv.appendChild(makeList);	
-
-				ge('charData').style.display = "block";
+				// set up our main collapsible set div	
+				dispDivMain.setAttribute("id", "dispData");
+				dispDivMain.setAttribute("data-role", "collapsible-set");
+				dispDivMain.setAttribute("data-inset", "false");
+				
+				// attach main div to our content				
+				dispPage.appendChild(dispDivMain);
 								
 				// Loop through localStorage
 				for(var i=0, j=localStorage.length; i<j; i++) {
 					
-					// create our List Item element
-					var makeLi = document.createElement("li");
-						linksLi = document.createElement('li');
-						makeList.appendChild(makeLi);
+					// create our seperate div elements for the characters and header element
+					var dispDivInner = document.createElement("div"),
+						dispCharHdr = document.createElement("h3");
+					
+					// set attributes to our new inner div and attach to main div then attach our character header to inner div
+					dispDivInner.setAttribute("data-role", "collapsible");
+					dispDivMain.appendChild(dispDivInner);
+					dispDivInner.appendChild(dispCharHdr);
 					
 					// extract our data
 					var key = localStorage.key(i),
@@ -295,26 +299,66 @@ window.addEventListener("DOMContentLoaded", function() {
 						
 					// recreate our object from our localStorage data
 					var obj = JSON.parse(value);
+
+					// create img tag and data and attach to document h3 element
+					var charItemHdr = "<img src=\"img/" + obj.char_gen[1] + ".png\" />" + obj.char_name[1];
+					dispCharHdr.innerHTML = charItemHdr;
 					
-					// write our data
-					var makeSubList = document.createElement("ul");
-					makeLi.appendChild(makeSubList);
-					getGenderImg(obj.char_gen[1], makeSubList);
+					// create our inner formatted set list element
+					var charItemInnerUL = document.createElement("ul"),
+						charItemInnerLI = document.createElement("li"),
+						charItemInnerHdr = document.createElement("h4");
+						charItemInnerA = document.createElement("a");
+						charItemAside = document.createElement("p");
+						
+					// set up our element attributes
+					charItemInnerUL.setAttribute("data-role", "listview");
+					charItemInnerUL.setAttribute("data-inset", "true");
+					charItemInnerA.setAttribute("href", "#edit");
+					charItemAside.setAttribute("class", "ui-li-aside");
 					
+					// append elements to our InnerDiv
+					dispDivInner.appendChild(charItemInnerUL);
+					charItemInnerUL.appendChild(charItemInnerLI);
+					charItemInnerHdr.innerHTML = obj.char_name[1];
+					charItemInnerLI.appendChild(charItemInnerHdr);
+					charItemInnerLI.appendChild(charItemInnerA);
+					charItemInnerLI.appendChild(charItemAside);
+					charItemAside.innerHTML = "<strong>Click to Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>";
+
 					// loop through data for proper itemization
 					for(var n in obj) {
 						
-						var makeSubLi = document.createElement("li");
-						makeSubList.appendChild(makeSubLi);
-						
-						// create our actual text
-						var optSubText = obj[n][0] + ": " + obj[n][1];
-						makeSubLi.innerHTML = optSubText;
-						makeSubList.appendChild(linksLi);
+						if ( (n === "char_name") || (n === "version") ) {
+							
+							// do nothing since we don't need these
+							
+						} else {
+							
+							// create our paragraphs and attach our elements
+							var charItemInnerP = document.createElement("p");
+							charItemInnerLI.appendChild(charItemInnerP);
+							
+							// create our actual text
+							var optSubText = obj[n][0] + ": " + obj[n][1];
+							charItemInnerP.innerHTML = optSubText;
+							charItemInnerLI.appendChild(charItemInnerP);
+							
+						}; // end our inner formatted list item
 						
 					}; // end for in loop
 					
-					makeItemLinks(localStorage.key(i), linksLi); // function to create our edit/delete links for each item
+					// create our link element for deletion and attach to list item
+					var charItemInnerDelA = document.createElement("a");
+					charItemInnerDelA.setAttribute("href", "#del");
+					charItemInnerLI.appendChild(charItemInnerDelA);
+					
+					// set our keys and make sure we have our eventListeners
+					charItemInnerA.key = key;
+					charItemInnerA.addEventListener("click", editItem);
+					charItemInnerDelA.key = key;
+					charItemInnerDelA.addEventListener("click", delItem);
+					
 									
 				}; // end for loop through localStorage
 				
@@ -322,22 +366,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 		}; // end function for displaying data
 		
-		
-		// function to find gender value and assign image
-		function getGenderImg(genType, makeSubList) {
-			
-			// create LI and insert into main UL for each character
-			var imgLi = document.createElement('li');
-			makeSubList.appendChild(imgLi);
-			
-			// create img tag and data and attach to document
-			var newImg = document.createElement('img'),
-				setSrc = newImg.setAttribute("src", "img/" + genType + ".png");
-			imgLi.appendChild(newImg);
-			
-			
-		};
-		
+				
 		
 		// create function to insert testing data
 		function autoPopulate() {
@@ -356,40 +385,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		}; // end autoPopulate function
 		
 		
-		// create edit and delete links for our stored data items
-		function makeItemLinks(key, linksLi) {
-			
-			// edit link variables
-			var editLink = document.createElement('a');
-		 		editLink.href = '#';
-				editLink.key = key;
-			var editText = "Edit Character";
-			
-			// listen for event to edit
-			editLink.addEventListener("click", editItem);
-			
-			// edit link creation
-			editLink.innerHTML = editText;
-			linksLi.appendChild(editLink);
-			
-			// create line break to separate our links
-			var breakTag = document.createElement('br');
-			linksLi.appendChild(breakTag);
-			
-			// delete link variables
-			var delLink = document.createElement('a');
-				delLink.href = '#';
-				delLink.key = key;
-			var delText = "Delete Character";
-			
-			// listen for event to delete
-			delLink.addEventListener("click", delItem);
-			
-			// delete link creation
-			delLink.innerHTML = delText;
-			linksLi.appendChild(delLink);
-			
-		};
 		
 		// fuction to make it edit our items
 		function editItem() {
@@ -462,8 +457,10 @@ window.addEventListener("DOMContentLoaded", function() {
 				//remove from local storage
 				localStorage.removeItem(this.key);
 				alert("Character Removed.");
-				window.location.reload();
 				
+				// reload the page
+				showChar();
+								
 			} else {
 				
 				//alert that our data has not been deleted
@@ -472,6 +469,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			};
 			
 		};
+		
 		
 		// validate character function for editing
 		function valChar(e) {

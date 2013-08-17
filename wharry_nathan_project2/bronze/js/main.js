@@ -277,6 +277,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				// write our data	
 				makeDiv.setAttribute("id", "charData");
 				makeList.setAttribute("data-role", "listview");
+				makeList.setAttribute("data-inset", "true");
 				dispPage.appendChild(makeDiv);
 				makeDiv.appendChild(makeList);	
 
@@ -288,7 +289,9 @@ window.addEventListener("DOMContentLoaded", function() {
 					// create our List Item element
 					var makeLi = document.createElement("li");
 						linksLi = document.createElement('li');
+						makePara = document.createElement("p"),
 						makeList.appendChild(makeLi);
+						makeLi.appendChild(makePara);
 					
 					// extract our data
 					var key = localStorage.key(i),
@@ -297,16 +300,18 @@ window.addEventListener("DOMContentLoaded", function() {
 					// recreate our object from our localStorage data
 					var obj = JSON.parse(value);
 					
+					makePara.innerHTML = obj['char_name'][1];
+															
 					// write our data
 					var makeSubList = document.createElement("ul");
-					makeLi.appendChild(makeSubList);
-					getGenderImg(obj.char_gen[1], makeSubList);
+						makeLi.appendChild(makeSubList);
+						getGenderImg(obj.char_gen[1], makeSubList);
 					
 					// loop through data for proper itemization
 					for(var n in obj) {
-						
+												
 						var makeSubLi = document.createElement("li");
-						makeSubList.appendChild(makeSubLi);
+							makeSubList.appendChild(makeSubLi);
 						
 						// create our actual text
 						var optSubText = obj[n][0] + ": " + obj[n][1];
@@ -315,7 +320,7 @@ window.addEventListener("DOMContentLoaded", function() {
 						
 					}; // end for in loop
 					
-					makeItemLinks(localStorage.key(i), linksLi); // function to create our edit/delete links for each item
+					makeItemLinks(localStorage.key(i), makeSubList); // function to create our edit/delete links for each item
 									
 				}; // end for loop through localStorage
 				
@@ -334,7 +339,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			// create img tag and data and attach to document
 			var newImg = document.createElement('img'),
 				setSrc = newImg.setAttribute("src", "img/" + genType + ".png");
-			imgLi.appendChild(newImg);
+				imgLi.appendChild(newImg);
 			
 			
 		};
@@ -358,12 +363,13 @@ window.addEventListener("DOMContentLoaded", function() {
 		
 		
 		// create edit and delete links for our stored data items
-		function makeItemLinks(key, linksLi) {
+		function makeItemLinks(key, makeSubList) {
 			
 			// edit link variables
+			var	editLinkLi = document.createElement('li');
 			var editLink = document.createElement('a');
 		 		editLink.href = '#';
-				edit.setAttribute("data-role", "button");
+				//edit.setAttribute("data-role", "button");
 				editLink.key = key;
 			var editText = "Edit Character";
 			
@@ -372,16 +378,18 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 			// edit link creation
 			editLink.innerHTML = editText;
-			linksLi.appendChild(editLink);
+			editLinkLi.appendChild(editLink);
+			makeSubList.appendChild(editLinkLi);
 			
 			// create line break to separate our links
 			var breakTag = document.createElement('br');
-			linksLi.appendChild(breakTag);
+			makeSubList.appendChild(breakTag);
 			
 			// delete link variables
-			var delLink = document.createElement('a');
+			var delLinkLi = document.createElement('li');
+			var	delLink = document.createElement('a');
 				delLink.href = '#';
-				delLink.setAttribute("data-role", "button");
+				//delLink.setAttribute("data-role", "button");
 				delLink.key = key;
 			var delText = "Delete Character";
 			
@@ -390,12 +398,16 @@ window.addEventListener("DOMContentLoaded", function() {
 			
 			// delete link creation
 			delLink.innerHTML = delText;
-			linksLi.appendChild(delLink);
+			delLinkLi.appendChild(delLink);
+			makeSubList.appendChild(delLinkLi);
 			
 		};
 		
 		// fuction to make it edit our items
 		function editItem() {
+			
+			// reload the additems section of the page
+			window.location.assign("#add");
 			
 			// get data from local storage with our character information
 			var value = localStorage.getItem(this.key);
@@ -408,7 +420,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			ge('char_name').value = item.char_name[1];
 			ge('char_race').value = item.char_race[1];
 			
-			var radios = document.forms[0].char_gen;
+			var radios = document.forms[1].char_gen;
 			
 			// loop through to get selected radio button
 			for (var i=0; i<radios.length; i++) {
@@ -418,11 +430,14 @@ window.addEventListener("DOMContentLoaded", function() {
 						
 					//assign value if checked
 					radios[i].setAttribute("checked", "checked");
+					$( "char_gen" ).prop( "checked", true ).checkboxradio( "refresh" );
 						
 				} else if (radios[i].value == "Female" && item.char_gen[1] == "Female") {
 					
 					//assign value if checked
 					radios[i].setAttribute("checked", "checked");
+					$( "char_gen" ).prop( "checked", true ).checkboxradio( "refresh" );
+
 					
 				}; // end validation for what is checked
 				
@@ -430,15 +445,20 @@ window.addEventListener("DOMContentLoaded", function() {
 
 			ge('char_class').value = item.char_class[1];
 			ge('char_age').value = item.char_age[1];
-			ge('char_weigh').value = item.char_weigh[1];
-			ge('number').innerHTML = item.char_weigh[1]; // remember to change our display to show the correct slide position
+			
+			// update slider value
+			$('#disp').page();
+			$('#char_weigh').val(item.char_weigh[1]);
+			$('#char_weigh').slider('refresh');
+			
+			//ge('number').innerHTML = item.char_weigh[1]; // remember to change our display to show the correct slide position
 			ge('char_birth').value = item.char_birth[1];
 			ge('char_desc').value = item.char_desc[1];
 			
 			// change our submit button properties to edit data
 			//addChar.removeEventListener("click", valChar);
-			ge('char_submit').value = "Edit Character";
-			var editSubmit = ge('char_submit');
+			ge('charSubmitBtn').value = "Edit Character";
+			var editSubmit = ge('charSubmitBtn');
 			
 			// create new event listener to run a new edit function and save key value for proper character editing
 			//editSubmit.addEventListener("click", valChar);

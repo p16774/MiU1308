@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+
+*********************
+Author: Nathan Wharry
+Title: Project 2 - D&D Character Sheet - Stylesheet
+Term: MiU 1308
+*********************
+
+*/
+
+html {
+	background: #000000;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-bacground-size: cover;
+	background-size: cover;
+}
+
+body {
+	color: #FFFF8C;
+}
+
+.separator {
+	width: 100%;
+	margin: 5px 0px;
+}
+
+.char_search {
+	width: 175px;
+	height: 30px;
+	font-size: 18px;
+	margin-right: 5px;
+	float: left;
+}
+
+.clear {
+	float: none;
+	clear: both;
+}
+
+.heading {
+	background-color: #a60112;
+	padding: 5px;
+	border: 1px solid #ffff8c;
+	margin: 0px;
+}
+
+h1 {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size: 22px;
+	text-align: center;
+}
+
+p.main {
+	font-family:"Times New Roman", Times, serif;
+	font-size: 16px;
+	text-align: justify;
+	border: 1px solid #ffff8c;
+	padding: 10px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+form li {
+	list-style-type: none;
+}
+
+form ul {
+	margin-left: -20px;
+}
+
+img.addchar {
+	width: 300px;
+}
+
+span.weight {
+	color: #FFFF8c;
+}
+
+a {
+	color: #FFFF8c;
+}
+
+#errors {
+	color: #FFFF8c;
+}
+
+div#charData ul {
+	padding: 0px 20px 10px 10px;
+	list-style-type: none;
+}
+
+div#charData ul ul{
+	padding-top: 20px;
+	border-bottom: 1px solid #FFFF8c;
+}
+
+.browse {
+	text-decoration: none;
+}
+
+

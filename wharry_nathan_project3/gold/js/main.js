@@ -240,150 +240,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// Display Data variables and functions **********
 	
-	var displayChar = ge("navDisp");
-	
-	var showChar = function () {
-				
-		// toggle our display
-		//toggleControls("on");
-		
-		// remove all display data divs
-		if (document.getElementById('dispData') != null) {
-			
-			remDiv = document.getElementById('dispData');
-			remDiv.parentNode.removeChild(remDiv);
-			
-		};
-		
-		// If statement to make sure we have data to display
-		
-			if (localStorage.length === 0) {
-				
-				alert("No character data to display so I created some for you!");
-				
-				// create testing data
-				autoPopulate();
-				
-				// refresh page to load data that was just added
-				showChar();
-				
-			} else {   
-				
-				// create our elements that will be used
-				var dispDivMain = document.createElement("div"),
-					dispPage = ge('charDisplay');
-										
-				// set up our main collapsible set div	
-				dispDivMain.setAttribute("id", "dispData");
-				dispDivMain.setAttribute("data-role", "collapsible-set");
-				dispDivMain.setAttribute("data-inset", "false");
-				
-				// attach main div to our content				
-				dispPage.appendChild(dispDivMain);
-								
-				// Loop through localStorage
-				for(var i=0, j=localStorage.length; i<j; i++) {
-					
-					// create our seperate div elements for the characters and header element
-					var dispDivInner = document.createElement("div"),
-						dispCharHdr = document.createElement("h3");
-					
-					// set attributes to our new inner div and attach to main div then attach our character header to inner div
-					dispDivInner.setAttribute("data-role", "collapsible");
-					dispDivMain.appendChild(dispDivInner);
-					dispDivInner.appendChild(dispCharHdr);
-					
-					// extract our data
-					var key = localStorage.key(i),
-						value = localStorage.getItem(key);
-						
-					// recreate our object from our localStorage data
-					var obj = JSON.parse(value);
-
-					// create img tag and data and attach to document h3 element
-					var charItemHdr = "<img src=\"img/" + obj.char_gen[1] + ".png\" />" + obj.char_name[1];
-					dispCharHdr.innerHTML = charItemHdr;
-					
-					// create our inner formatted set list element
-					var charItemInnerUL = document.createElement("ul"),
-						charItemInnerLI = document.createElement("li"),
-						charItemInnerHdr = document.createElement("h4");
-						charItemInnerA = document.createElement("a");
-						charItemAside = document.createElement("p");
-						
-					// set up our element attributes
-					charItemInnerUL.setAttribute("data-role", "listview");
-					charItemInnerUL.setAttribute("data-inset", "true");
-					charItemInnerA.setAttribute("href", "#edit");
-					charItemAside.setAttribute("class", "ui-li-aside");
-					
-					// append elements to our InnerDiv
-					dispDivInner.appendChild(charItemInnerUL);
-					charItemInnerUL.appendChild(charItemInnerLI);
-					charItemInnerHdr.innerHTML = obj.char_name[1];
-					charItemInnerLI.appendChild(charItemInnerHdr);
-					charItemInnerLI.appendChild(charItemInnerA);
-					charItemInnerLI.appendChild(charItemAside);
-					charItemAside.innerHTML = "<strong>Click to Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>";
-
-					// loop through data for proper itemization
-					for(var n in obj) {
-						
-						if ( (n === "char_name") || (n === "version") ) {
-							
-							// do nothing since we don't need these
-							
-						} else {
-							
-							// create our paragraphs and attach our elements
-							var charItemInnerP = document.createElement("p");
-							charItemInnerLI.appendChild(charItemInnerP);
-							
-							// create our actual text
-							var optSubText = obj[n][0] + ": " + obj[n][1];
-							charItemInnerP.innerHTML = optSubText;
-							charItemInnerLI.appendChild(charItemInnerP);
-							
-						}; // end our inner formatted list item
-						
-					}; // end for in loop
-					
-					// create our link element for deletion and attach to list item
-					var charItemInnerDelA = document.createElement("a");
-					charItemInnerDelA.setAttribute("href", "#del");
-					charItemInnerLI.appendChild(charItemInnerDelA);
-					
-					// set our keys and make sure we have our eventListeners
-					charItemInnerA.key = key;
-					charItemInnerA.addEventListener("click", editItem);
-					charItemInnerDelA.key = key;
-					charItemInnerDelA.addEventListener("click", delItem);
-					
-									
-				}; // end for loop through localStorage
-				
-			}; // end if statement for displaying data
-			
-		}; // end function for displaying data
-		
-				
-		
-		// create function to insert testing data
-		function autoPopulate() {
-			
-			// Pull JSON data and store it into localStorage from our json.js file
-			for (var n in json) {
-				
-				// create our unique identifier
-				var id = Math.floor(Math.random()*10000000);
-				
-				// store data
-				localStorage.setItem(id, JSON.stringify(json[n]));
-				
-			}; // end for/in loop
-			
-		}; // end autoPopulate function
-		
+	var displayChar = ge("navDisp");		
 		
 		
 		// fuction to make it edit our items
@@ -598,117 +455,13 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Execute the search parameters under the search page
 	function charSearch(e) {
 		
-		//alert('you made it here');
-		
-		// create our array that we'll store our singlular object
-		var sortArray = new Array;
-		
-		// loop through our localStorage to restructure our object
-		for(var i=0, j=localStorage.length; i<j; i++) {
-		
-			// extract our data
-			var key = localStorage.key(i),
-				value = localStorage.getItem(key);
-				
-			// recreate our object from our localStorage data
-			var charInfo = new Object,
-				obj = JSON.parse(value);
-			
-			// loop through each object and push it into a singular array
-			for (var n in obj) {
-				
-				// create object
-				charInfo[obj[n][0]] = obj[n][1];	
-				
-			}; // close object creation
-		
-			// push object into our array
-			sortArray.push(charInfo);
-		
-		}; // close loop through localStorage
+		// test
 		
 		
-		/*
-		// determine how we are sorting
-		if (sortOrder === false) {
-
-			sortByName = sortArray.sort(sortBy('Name', false, function(a){return a.toUpperCase()}));
-			
-		} else {
-			
-			sortByName = sortArray.sort(sortBy('Name', true, function(a){return a.toUpperCase()}));
-			
-		};		
-		*/
-		
-		// evaluate the array and sort properly
-		sortByName = sortArray.sort(sortBy('Name', false, function(a){return a.toUpperCase()}));
 		
 	};
 	
-	function sortBy(sortField, sortReverse, dataType) {
-		
-		// create sort function to allow any field to be sorted
-		var id = function (x) { return dataType ? dataType(x[sortField]) : x[sortField]};
-		
-		return function (a,b) {
-
-			var A = id(a), B = id(b);
-			return ((A < B) ? -1 : (A > B) ? 1 : 0) * [1,-1][+!!sortReverse];
-			
-		}; // close function that allow multiple sort types
-		
-	}; // close sortArray function
 	
-	// Browse by Name
-	function browseName() {
-		
-		// create our array that we'll store our singlular object
-		var sortArray = new Array;
-		
-		// loop through our localStorage to restructure our object
-		for(var i=0, j=localStorage.length; i<j; i++) {
-		
-			// extract our data
-			var key = localStorage.key(i),
-				value = localStorage.getItem(key);
-				
-			// recreate our object from our localStorage data
-			var charInfo = new Object,
-				obj = JSON.parse(value);
-			
-			// loop through each object and push it into a singular array
-			for (var n in obj) {
-				
-				// create object
-				charInfo[obj[n][0]] = obj[n][1];	
-				
-			}; // close object creation
-		
-			// push object into our array
-			sortArray.push(charInfo);
-		
-		}; // close loop through localStorage
-		
-		
-		/*
-		// determine how we are sorting
-		if (sortOrder === false) {
-
-			sortByName = sortArray.sort(sortBy('Name', false, function(a){return a.toUpperCase()}));
-			
-		} else {
-			
-			sortByName = sortArray.sort(sortBy('Name', true, function(a){return a.toUpperCase()}));
-			
-		};		
-		*/
-		
-		// evaluate the array and sort properly
-		sortByName = sortArray.sort(sortBy('Name', false, function(a){return a.toUpperCase()}));				
-		
-	};
-		
 		
 	// Execute Needed Functions and declare variables
 	var genValue,
@@ -726,7 +479,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var addChar = ge("charSubmitBtn");		
 		
 	// Event Listener Calls
-	displayChar.addEventListener("click", showChar); // display data function
+	//displayChar.addEventListener("click", showChar); // display data function
 	clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
 	addChar.addEventListener("click", valChar); // add new character data function
 	searchBox.addEventListener("click", charSearch); // run the search parameters

@@ -4,7 +4,7 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 2 - D&D Character Sheet - Index page
+Title: Project 3 - D&D Character Sheet - Display Characters page
 Term: MiU 1308
 *********************
 
@@ -31,19 +31,19 @@ Term: MiU 1308
 
 <body>
 
-<div data-role="page" id="disp" data-theme="a">
+<div data-role="page" id="name" data-theme="a">
 
-	<div data-role="header" id="dispHdr" data-id="dndsheet" data-position="fixed"> 
+	<div data-role="header" id="nameHdr" data-id="dndsheet" data-position="fixed"> 
     	
         <div data-role="navbar">
         
             <ul>
             
-                <li><a href="#home" data-icon="home">Home</a></li>
-                <li><a href="#add" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#disp" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" data-icon="search">Search</a></li>
-                <li><a href="#info" data-icon="info">Info</a></li>
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
                 
             </ul>
             
@@ -53,7 +53,7 @@ Term: MiU 1308
     
         <img src="img/heading.png" alt="Heading Image" width="100%" />
         
-    <div data-role="content" id="charDisplay">
+    <div data-role="content" id="nameDisplay">
     
     	<div data-role="collapsible-set" id="dispData" data-inset="false">
         
@@ -63,11 +63,165 @@ Term: MiU 1308
 
 	<div data-role="footer" data-position="fixed">
     
-        <p><a href="#" id="charClearInfo" data-role="button">Clear Database</a></p>
+        <p><a href="#" id="charNameClear" data-role="button">Clear Database</a></p>
 	
     </div>
     
 </div>
+
+<div data-role="page" id="race" data-theme="a">
+
+	<div data-role="header" id="raceHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+        <img src="img/heading.png" alt="Heading Image" width="100%" />
+        
+    <div data-role="content" id="raceDisplay">
+    
+    	<div data-role="collapsible-set" id="dispData" data-inset="false">
+        
+        </div>
+    
+    </div>
+
+	<div data-role="footer" data-position="fixed">
+    
+        <p><a href="#" id="charRaceClear" data-role="button">Clear Database</a></p>
+	
+    </div>
+    
+</div>
+
+<div data-role="page" id="gender" data-theme="a">
+
+	<div data-role="header" id="genHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+        <img src="img/heading.png" alt="Heading Image" width="100%" />
+        
+    <div data-role="content" id="genDisplay">
+    
+    	<div data-role="collapsible-set" id="dispData" data-inset="false">
+        
+        </div>
+    
+    </div>
+
+	<div data-role="footer" data-position="fixed">
+    
+        <p><a href="#" id="charGenClear" data-role="button">Clear Database</a></p>
+	
+    </div>
+    
+</div>
+
+<div data-role="page" id="class" data-theme="a">
+
+	<div data-role="header" id="classHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+        <img src="img/heading.png" alt="Heading Image" width="100%" />
+        
+    <div data-role="content" id="classDisplay">
+    
+    	<div data-role="collapsible-set" id="dispData" data-inset="false">
+        
+        </div>
+    
+    </div>
+
+	<div data-role="footer" data-position="fixed">
+    
+        <p><a href="#" id="charClassClear" data-role="button">Clear Database</a></p>
+	
+    </div>
+    
+</div>
+
+<div data-role="page" id="status" data-theme="a">
+
+	<div data-role="header" id="statusHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+        <img src="img/heading.png" alt="Heading Image" width="100%" />
+        
+    <div data-role="content" id="statusDisplay">
+    
+    	<div data-role="collapsible-set" id="dispData" data-inset="false">
+        
+        </div>
+    
+    </div>
+
+	<div data-role="footer" data-position="fixed">
+    
+        <p><a href="#" id="charStatusClear" data-role="button">Clear Database</a></p>
+	
+    </div>
+    
+</div>
+
+
 
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

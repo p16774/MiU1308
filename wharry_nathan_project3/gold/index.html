@@ -43,7 +43,7 @@ Term: MiU 1308
                 <li><a href="index.html#home" data-ajax="false" class="ui-btn-active" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
                 <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
                 
             </ul>
@@ -61,10 +61,9 @@ Term: MiU 1308
 
         <img src="img/separator.png" alt="separator" class="separator" />
         
-        <form action="#" method="post" id="searchForm" data-ajax="false">
+        <form action="search.html" method="" id="searchForm" data-ajax="false">
         
-                <input type="text" id="charSearch" value="" placeholder="Enter Search Text">
-                <input type="submit" value="Search" id="charSearchBtn">
+                <input type="submit" value="Search for Characters" id="charSearchBtn">
            
         </form>
         
@@ -105,7 +104,7 @@ Term: MiU 1308
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" class="ui-btn-active" data-icon="plus">Add</a></li>
                 <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
                 
             </ul>
@@ -169,9 +168,9 @@ Term: MiU 1308
 </div>   
 
 
-<div data-role="page" id="search" data-theme="a">
+<div data-role="page" id="news" data-theme="a">
 
-	<div data-role="header" id="searchHdr" data-id="dndsheet" data-position="fixed"> 
+	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
     	
         <div data-role="navbar">
         
@@ -180,23 +179,34 @@ Term: MiU 1308
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
                 <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
-                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
                 
             </ul>
             
         </div>
         
-        <img src="img/heading.png" alt="Heading Image" width="100%" />
+    </div>
         
-        <div data-role="content">
-        
-            <h2>Search Page</h2>
-        
-        </div>
-            
-	</div>
+    <img src="img/heading.png" alt="Heading Image" width="100%" />
     
+    <div data-role="content">
+    
+        <ul data-role="listview" data-inset="true" data-theme="a">
+        
+        	<li data-role="list-divider" data-theme="a"><h2>Character Sheet Changelog</h2></li>
+            <li>Bothar created!</li>
+            <li>Yancy edited!</li>
+            <li>Yancy created!</li>
+            <li>Randall deleted!</li>
+            <li>Randall created!</li>
+            <li>Bothar created!</li>
+            <li>DATABASE CLEARED!!</li>
+            
+        </ul>        
+    
+    </div>
+          
 </div>
    
 
@@ -211,7 +221,7 @@ Term: MiU 1308
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
                 <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="index.html#search" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
                 
             </ul>
@@ -223,8 +233,17 @@ Term: MiU 1308
         <img src="img/heading.png" alt="Heading Image" width="100%" />
         
     <div data-role="content">
-    
-        <h2>About Page</h2>
+            
+        <ul data-role="listview">
+        
+        	<li><a href="#home">Go back Home</a></li>
+            <li><a href="../bronze/index.html" rel="external">Bronze App</a></li>
+            <li><a href="../gold/index.html">Gold App</a></li>
+            <li><a href="http://github.com" rel="external">GitHub</a></li>
+		
+        </ul>
+        
+        <p>**All images provided through the fankit GPL license <a href="http://www.wizards.com" rel="external">Wizard of the Coast &reg;</a></p>
     
     </div>
     

@@ -42,7 +42,7 @@ Term: MiU 1308
                 <li><a href="#home" class="ui-btn-active" data-icon="home">Home</a></li>
                 <li><a href="#add" data-icon="plus">Add</a></li>
                 <li><a href="#disp" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="search.html" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
                 <li><a href="#info" data-icon="info">Info</a></li>
                 
             </ul>
@@ -60,10 +60,9 @@ Term: MiU 1308
 
         <img src="img/separator.png" alt="separator" class="separator" />
         
-        <form action="#search" method="post" id="searchForm" data-ajax="false">
+        <form action="search.html" method="post" id="searchForm" data-ajax="false">
         
-                <input type="text" id="charSearch" value="" placeholder="Enter Search Text">
-                <input type="submit" value="Search" id="charSearchBtn">
+                <input type="submit" value="Search for Characters" id="charSearchBtn">
            
         </form>
         
@@ -104,7 +103,7 @@ Term: MiU 1308
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#add" class="ui-btn-active" data-icon="plus">Add</a></li>
                 <li><a href="#disp" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="search.html" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
                 <li><a href="#info" data-icon="info">Info</a></li>
                 
             </ul>
@@ -178,7 +177,7 @@ Term: MiU 1308
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#add" data-icon="plus">Add</a></li>
                 <li><a href="#disp" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="search.html" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
                 <li><a href="#info" data-icon="info">Info</a></li>
                 
             </ul>
@@ -212,7 +211,7 @@ Term: MiU 1308
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#add" data-icon="plus">Add</a></li>
                 <li><a href="#disp" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" class="ui-btn-active" data-icon="search">Search</a></li>
+                <li><a href="search.html" data-ajax="false" id="navSearch" class="ui-btn-active" data-icon="search">Search</a></li>
                 <li><a href="#info" data-icon="info">Info</a></li>
                 
             </ul>
@@ -246,7 +245,7 @@ Term: MiU 1308
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#add" data-icon="plus">Add</a></li>
                 <li><a href="#disp" id="navDisp" data-icon="star">Display</a></li>
-                <li><a href="#search" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="search.html" data-ajax="false" id="navSearch" data-icon="search">Search</a></li>
                 <li><a href="#info" class="ui-btn-active" data-icon="info">Info</a></li>
                 
             </ul>
@@ -259,7 +258,16 @@ Term: MiU 1308
         
     <div data-role="content">
     
-        <h2 align="center">About Page</h2>
+        <ul data-role="listview" data-theme="a">
+        
+        	<li><a href="#home">Go back Home</a></li>
+            <li><a href="../bronze/index.html">Bronze App</a></li>
+            <li><a href="../gold/index.html" rel="external">Gold App</a></li>
+            <li><a href="http://github.com" rel="external">GitHub</a></li>
+		
+        </ul>
+        
+        <p>**All images provided through the fankit GPL license <a href="http://www.wizards.com" rel="external">Wizard of the Coast &reg;</a></p>
     
     </div>
     

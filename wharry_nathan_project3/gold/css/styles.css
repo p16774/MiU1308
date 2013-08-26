@@ -102,3 +102,9 @@ div#charData ul ul{
 	text-decoration: none;
 }
 
+.minitext {
+	font-style: italic;
+	font-variant: small-caps;
+	color: #FFFF8C;
+}
+

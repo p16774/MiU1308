@@ -121,38 +121,44 @@ Term: MiU 1308
             
         <!--Start Form Entry-->
         
-        <form action="#" method="post" id="charForm" onSubmit="return valChar();" data-ajax="false" data-role="listview" data-inset="true">
+        <form action="" method="post" id="charForm" data-ajax="false" data-role="listview" data-inset="true">
         
-                <ul id="errors"></ul>
-                <ul class="fade" id="information">
                 
-                    <li><label for="char_name">Name: </label><input type="text" value="" id="char_name"></li>
-                    <li id="select_race"><label for="char_race">Race: </label></li>            
-                    <li><label for="char_gen">Gender: &nbsp; </label>
-                
-                        <!--Label for easy assignment for the gender field-->
-                        <label for="male">Male</label>
-                        <input type="radio" id="male" value="Male" name="char_gen"> 
+            <div data-role="fieldcontain">
+                <label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name">
+            </div>
             
-                        <label for="female">Female</label>            
-                        <input type="radio" id="female" value="Female" name="char_gen"></li>
-                 
-                    <li id="select_class"><label for="char_class">Class: </label></li>
-                    <li><label for="char_age">Age: </label><input type="number" value="" id="char_age"></li>
-                    
-                    <!--added slider for range and value changing span through javascript-->
-                    <li><label for="char_weigh">Weight: </label><input type="range" value="0" id="char_weigh" min="0" max="300"> &nbsp;</li>
-                    <li><label for="char_birth">BirthDay: </label><input type="date" value="" id="char_birth"></li>
-                
-                    <!--added size attributes to fill a standard iPhone screen and make it look pretty-->
-                    <li><label for="char_desc">Brief Description: </label></li>
-                    <li><textarea value="" rows="5" cols="35" id="char_desc"></textarea></li>
-                    
-                    <!--added version info for type of character, made hidden as this is all that's currently supported-->
-                    <li><input type="hidden" value="3.5" id="version"></li>
-                
-                </ul>
-                    
+            <div data-role="fieldcontain" id="select_race">
+                <label for="char_race">Race: <span class="minitext">*required</span></label>            
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label for="char_gen">Gender: <span class="minitext">*required</span></label></span>
+
+                <!--Label for easy assignment for the gender field-->
+                <label for="boy">Boy</label>
+                <input type="radio" id="boy" value="Boy" name="char_gen"> 
+    
+                <label for="girl">Girl</label>            
+                <input type="radio" id="girl" value="Girl" name="char_gen">
+            </div>
+            
+            <div data-role="fieldcontain" id="select_class">
+                <label for="char_class">Class: <span class="minitext">*required</span></label>
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label for="char_age">Age: </label><input type="number" placeholder="age in numbers..." id="char_age" name="char_age">
+			</div>
+                        
+            <input type="hidden" value="active" id="status">
+        	
+            <div data-role="fieldcontain">
+                <!--added size attributes to fill a standard iPhone screen and make it look pretty-->
+                <label for="char_desc">Brief Description: </label>
+                <textarea id="char_desc" name="char_desc"></textarea>
+            </div>
+                            
                     
             
                 <!--Submit button outside fieldset box for emphasis-->
@@ -252,8 +258,9 @@ Term: MiU 1308
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>    
+    <script src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/json.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/newmain.js"></script>
 
     
 </body>

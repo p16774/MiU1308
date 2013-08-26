@@ -19,55 +19,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	var display = window.location.hash,
 		current_path = window.location.pathname.split('/').pop();
 				
-	function chooseDisplay(display) {
-		
-		switch(display) {
-			
-			case "#disp":
-						
-				// run our display data function			
-				showChar();
-				
-				break;
-			
-			case "#clear":
-			
-				// run clear data function
-				deleteChar();
-				
-				break;
-			
-			case "#name":
-				
-				// check current loaded page and redirect as needed
-				if (current_path != "browse.html") {
-					
-					// navigate to the browse page
-					window.location.assign("browse.html#name");
-					
-				} else {
-					
-					// run browse function
-					browseName();
-					
-				}; // end if statement to validate current page
-				
-				
-				break;
-			
-			default:
-			
-				if(current_path === "additem.html") {
-					
-
-					
-				}; // end if to determine page
-			
-				break;
-			
-		}; // end switch display
-			
-	}; // end chooseDisplay function
 
 	// getElementById Function
 	function ge(x) {

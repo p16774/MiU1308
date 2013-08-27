@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		// populate or pull localStorage correctly
 		if (localStorage.length === 0) {
 			
-			alert("Sorry, no characters to search through.");
+			alert("Sorry, no characters to search through. Please go to the Add Character page and create a few first.");
 						
 		} else { 
 						

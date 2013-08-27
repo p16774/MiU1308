@@ -125,11 +125,11 @@ Term: MiU 1308
         
                 
             <div data-role="fieldcontain">
-                <label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name">
+                <label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name"><br /><p style="font-size: 14px;" class="minitext">Ex: Conan or Conan the Barbarian</p>
             </div>
             
             <div data-role="fieldcontain" id="select_race">
-                <label for="char_race">Race: <span class="minitext">*required</span></label>            
+                <label for="char_race">Race: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Dwarf</p>            
             </div>
             
             <div data-role="fieldcontain">
@@ -141,14 +141,16 @@ Term: MiU 1308
     
                 <label for="girl">Girl</label>            
                 <input type="radio" id="girl" value="Girl" name="char_gen">
+                <br /><p style="font-size: 14px;" class="minitext">Please select one</p>
             </div>
             
             <div data-role="fieldcontain" id="select_class">
-                <label for="char_class">Class: <span class="minitext">*required</span></label>
+                <label for="char_class">Class: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Wizard</p>
             </div>
             
             <div data-role="fieldcontain">
                 <label for="char_age">Age: </label><input type="number" placeholder="age in numbers..." id="char_age" name="char_age">
+                <br/><p style="font-size: 14px;" class="minitext">Please enter only the number. Ex: 23</p>
 			</div>
                         
             <input type="hidden" value="active" id="status">
@@ -157,6 +159,7 @@ Term: MiU 1308
                 <!--added size attributes to fill a standard iPhone screen and make it look pretty-->
                 <label for="char_desc">Brief Description: </label>
                 <textarea id="char_desc" name="char_desc"></textarea>
+                <br /><p style="font-size: 14px;" class="minitext">Please describe your character.<br />Items like haircolor, height, or background story would<br />go here.</p>
             </div>
                             
                     
@@ -257,7 +260,7 @@ Term: MiU 1308
  
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>    
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/json.js"></script>
     <script type="text/javascript" src="js/newmain.js"></script>

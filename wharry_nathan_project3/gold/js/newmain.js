@@ -105,7 +105,7 @@ $('#add').on('pageinit', function(){
 		
 		
 		// validate character function for editing
-		function validate() {
+		function valChar() {
 			
 			// elements we need to validate in our form
 			var getCharName = ge("char_name");
@@ -180,9 +180,7 @@ $('#add').on('pageinit', function(){
 				return false;
 				
 			} else {
-				
-				alert('form has validated');
-				
+								
 				// run our store data function if field validate
 				storeChar(this.key);
 				
@@ -268,53 +266,42 @@ var getData = function(){
 };
 
 var storeData = function(data){
+							
+		// create random number for unique id in local storage
+		var id = Math.floor(Math.random()*10000000),
+			item = new Array;
+		var edit = false;
 					
-		// pull in our argument for editing characters
-		if (!key) {
-						
-			// create random number for unique id in local storage
-			var id = Math.floor(Math.random()*10000000);
-			var edit = false;
-			
-		} else {
-			
-			// use previous key to update character
-			var id = key;
-			var edit = true;
-			
-		};
-		
 		// run needed data functions
 		genSelect();
+		
+			// gather our form fields and save our data
+			var item				= {};
+				item.char_name		= ["Name", $("#char_name").val()];
+				item.char_race		= ["Race", $("#char_race").val()];
+				item.char_gen		= ["Gender", genValue];
+				item.char_class		= ["Class", $("#char_class").val()];
+				item.char_age		= ["Age", $("#char_age").val()];
+				item.char_desc		= ["Description", $("#char_desc").val()];
+				item.status		= ["Status", $("#status").val()];	
 				
-		// gather our form fields and save our data
-		var item				= {};
-			item.char_name		= ["Name", ge("char_name").value];
-			item.char_race		= ["Race", ge("char_race").value];
-			item.char_gen		= ["Gender", genValue];
-			item.char_class		= ["Class", ge("char_class").value];
-			item.char_age		= ["Age", ge("char_age").value];
-			item.char_weigh		= ["Weight", ge("char_weigh").value];
-			item.char_birth		= ["BirthDay", ge("char_birth").value];
-			item.char_desc		= ["Description", ge("char_desc").value];
-			item.version		= ["Version", ge("version").value];	
-			
 			// variablize our stringify
 			var itemData = JSON.stringify(item);
 									
 			// save our data into local storage
 			localStorage.setItem(id, itemData);
+		
+		// validation to change the alert message
+		if (edit === true) {
 			
-			// validation to change the alert message
-			if (edit === true) {
-				
-				alert("Character Updated Successfully!");
-				
-			} else {
-				
-				alert("New Character Created and Saved Successfully!");
-				
-			};
+			alert("Character Updated Successfully!");
+			
+		} else {
+			
+			alert("New Character Created and Saved Successfully!");
+			
+		};
+		
 					
 }; 
 
@@ -332,17 +319,16 @@ function genSelect() {
 				
 				//assign value if checked
 				genValue = radios[i].value;
-				
+								
 		}; // close if conditional for checked value
 		
 	}; // close for loop to search through the radios
-	
+		
 }; // end genSelect function
 
 
 
 var	deleteItem = function (){
-	
 	
 		// delete selected character from localStorage
 		function delItem () {

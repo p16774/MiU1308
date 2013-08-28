@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<!--
+
+*********************
+Author: Nathan Wharry
+Title: Project 3 - D&D Character Sheet - Search page
+Term: MiU 1308
+*********************
+
+-->
+
+<html style="background-color: #000000;">
+
+<head>
+
+	<meta charset="utf-8">
+    <meta name="description" content="A small app to hold character information for Dungeons & Dragons games">
+    <meta name="keywords" content="D&D, character, characters, character sheet, dungeons and dragons, dungeons, dragons">
+    <meta name="robot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    <!--Additional Document Links-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.css" />
+    <link rel="stylesheet" type="text/css" href="css/themes/dnd.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+	<title>D&D Character Sheet App</title>
+
+</head>
+
+<body>
+
+<div data-role="page" id="search" data-theme="a">
+
+	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
+    
+    <span><img src="img/branding.png" /></span>
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="search.html" class="ui-btn-active" id="navSearch" data-icon="search">Search</a></li>
+                <li><a href="index.html#info" data-ajax="false" data-icon="info">Info</a></li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+        
+        
+    <div data-role="content" id="searchDisplay">
+    
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for any character data..." data-inset="true" id="searchList">
+        
+        </ul>
+    
+    </div>
+                
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>    
+	<script type="text/javascript" src="js/json.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
+
+</body>
+
+</html>

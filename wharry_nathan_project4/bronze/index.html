@@ -122,35 +122,38 @@ Term: MiU 1308
             
         <!--Start Form Entry-->
         
+        
         <form action="#" method="post" id="charForm" onSubmit="return valChar();" data-ajax="false" data-role="listview" data-inset="true">
         
                 <ul id="errors"></ul>
                 <ul class="fade" id="information">
                 
-                    <li><label for="char_name">Name: </label><input type="text" value="" id="char_name"></li>
-                    <li id="select_race"><label for="char_race">Race: </label></li>            
-                    <li><label for="char_gen">Gender: &nbsp; </label>
-                
-                        <!--Label for easy assignment for the gender field-->
-                        <label for="male">Male</label>
-                        <input type="radio" id="male" value="Male" name="char_gen"> 
-            
-                        <label for="female">Female</label>            
-                        <input type="radio" id="female" value="Female" name="char_gen"></li>
-                 
-                    <li id="select_class"><label for="char_class">Class: </label></li>
-                    <li><label for="char_age">Age: </label><input type="number" value="" id="char_age"></li>
+                    <li><label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name"><br /><p style="font-size: 14px;" class="minitext">Ex: Conan or Conan the Barbarian</p></li>
                     
-                    <!--added slider for range and value changing span through javascript-->
-                    <li><label for="char_weigh">Weight: </label><input type="range" value="0" id="char_weigh" min="0" max="300"> &nbsp;</li>
-                    <li><label for="char_birth">BirthDay: </label><input type="date" value="" id="char_birth"></li>
-                
+                    <li id="select_race"><label for="char_race">Race: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Dwarf</p></li>
+                                
+                    <li><label for="char_gen">Gender: <span class="minitext">*required</span></label></span>
+
+                <!--Label for easy assignment for the gender field-->
+                <label for="boy">Boy</label>
+                <input type="radio" id="boy" value="Boy" name="char_gen"> 
+    
+                <label for="girl">Girl</label>            
+                <input type="radio" id="girl" value="Girl" name="char_gen">
+                <br /><p style="font-size: 14px;" class="minitext">Please select one</p></li>
+                 
+                    <li id="select_class"><label for="char_class">Class: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Wizard</p></li>
+                    
+                    <li><label for="char_age">Age: </label><input type="number" placeholder="age in numbers..." id="char_age" name="char_age">
+                <br/><p style="font-size: 14px;" class="minitext">Please enter only the number. Ex: 23</p></li>
+                    
                     <!--added size attributes to fill a standard iPhone screen and make it look pretty-->
-                    <li><label for="char_desc">Brief Description: </label></li>
-                    <li><textarea value="" rows="5" cols="35" id="char_desc"></textarea></li>
+                    <li><label for="char_desc">Brief Description: </label>
+                <textarea id="char_desc" name="char_desc"></textarea>
+                <br /><p style="font-size: 14px;" class="minitext">Please describe your character.<br />Items like haircolor, height, or background story would<br />go here.</p></li>
                     
                     <!--added version info for type of character, made hidden as this is all that's currently supported-->
-                    <li><input type="hidden" value="3.5" id="version"></li>
+                    <li><input type="hidden" value="active" id="status"></li>
                 
                 </ul>
                     

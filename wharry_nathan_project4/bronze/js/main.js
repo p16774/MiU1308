@@ -184,10 +184,10 @@ window.addEventListener("DOMContentLoaded", function() {
 			item.char_gen		= ["Gender", genValue];
 			item.char_class		= ["Class", ge("char_class").value];
 			item.char_age		= ["Age", ge("char_age").value];
-			item.char_weigh		= ["Weight", ge("char_weigh").value];
-			item.char_birth		= ["BirthDay", ge("char_birth").value];
+			//item.char_weigh		= ["Weight", ge("char_weigh").value];
+			//item.char_birth		= ["BirthDay", ge("char_birth").value];
 			item.char_desc		= ["Description", ge("char_desc").value];
-			item.version		= ["Version", ge("version").value];	
+			item.status		= ["Status", ge("status").value];	
 			
 			// variablize our stringify
 			var itemData = JSON.stringify(item);
@@ -446,13 +446,15 @@ window.addEventListener("DOMContentLoaded", function() {
 			ge('char_class').value = item.char_class[1];
 			ge('char_age').value = item.char_age[1];
 			
+			/*
 			// update slider value
 			$('#disp').page();
 			$('#char_weigh').val(item.char_weigh[1]);
 			$('#char_weigh').slider('refresh');
+			*/
 			
 			//ge('number').innerHTML = item.char_weigh[1]; // remember to change our display to show the correct slide position
-			ge('char_birth').value = item.char_birth[1];
+			//ge('char_birth').value = item.char_birth[1];
 			ge('char_desc').value = item.char_desc[1];
 			
 			// change our submit button properties to edit data
@@ -503,14 +505,14 @@ window.addEventListener("DOMContentLoaded", function() {
 			var getCharName = ge("char_name");
 			var getCharRace = ge("char_race");
 			var getCharClass = ge("char_class");
-			var getCharWeight = ge("char_weigh");
+			//var getCharWeight = ge("char_weigh");
 			
 			// reset our error messages array
 			errMsg.innerHTML = "";
 			getCharName.style.border = "";
 			getCharRace.style.border = "";
 			getCharClass.style.border = "";
-			getCharWeight.style.border = "";
+			//getCharWeight.style.border = "";
 
 			// error messages
 			var errMessages = [];
@@ -545,6 +547,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 			};
 			
+			/*
 			// Weight Validation
 			if (getCharWeight.value == "0") {
 				
@@ -554,6 +557,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				errMessages.push(weightError);
 				
 			};
+			*/
 			
 			// check for errors and display
 			if (errMessages.length >= 1) {

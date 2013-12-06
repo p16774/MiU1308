@@ -1,78 +1,274 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Miu1308 by p16774</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!DOCTYPE html>
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/p16774/MiU1308">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/p16774/MiU1308/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/p16774/MiU1308/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+<!--
 
-    <div class="wrapper">
+*********************
+Author: Nathan Wharry
+Title: Project 3 - D&D Character Sheet - Index page
+Term: MiU 1308
+*********************
 
-      <section>
-        <div id="title">
-          <h1>Miu1308</h1>
-          <p>Mobile Interface &amp; Usability</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/p16774">p16774</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+-->
 
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<html style="background-color: #000000;">
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<head>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	<meta charset="utf-8">
+    <meta name="description" content="A small app to hold character information for Dungeons & Dragons games">
+    <meta name="keywords" content="D&D, character, characters, character sheet, dungeons and dragons, dungeons, dragons">
+    <meta name="robot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="cache-control" content="no-cache">
     
-  </body>
+    <!--Additional Document Links-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.css" />
+    <link rel="stylesheet" type="text/css" href="css/themes/dnd.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+	<title>D&D Character Sheet App</title>
+
+</head>
+
+<body>
+
+<div data-role="page" id="home" data-theme="a">
+
+	<div data-role="header" id="homeHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" class="ui-btn-active" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+
+        <a href="#add" target="_self">
+        <img src="img/index_cta.png" alt="Dungeons and Dragons Character Sheet Database" width="100%" />
+        </a>
+        
+    <div data-role="content">
+
+        <img src="img/separator.png" alt="separator" class="separator" />
+        
+        <form action="search.html" method="" id="searchForm" data-ajax="false">
+        
+                <input type="submit" value="Search for Characters" id="charSearchBtn">
+           
+        </form>
+        
+        <ul data-role="listview" data-inset="true" data-theme="a">
+        
+        	<li data-role="list-divider" data-theme="a"><h3>Browse</h3></li>
+            <li><a href="browse.html#name" target="_self">by Name</a></li>
+            <li><a href="browse.html#race" target="_self">by Race</a></li>
+            <li><a href="browse.html#class" target="_self">by Class</a></li>
+            <li><a href="browse.html#gender" target="_self">by Gender</a></li>
+            <li><a href="browse.html#status" target="_self">by Status</a></li>
+            
+        </ul>
+        
+        
+        <div style="height: 10px;">&nbsp;</div>
+        
+        <!--currently just a link, will update with proper emphasis as time allows-->
+        <!--<a href=".\additem.html" target="_self"><img class="addchar" src="img/button.png" /></a>-->
+        <img src="img/logo.png" alt="D&D Authorized Logo 4th Edition" width="100%" />
+        
+    </div>
+        
+    <div data-role="footer"><h4>Footer</h4></div>
+    
+</div>
+
+<!--Add Character Page-->
+
+<div data-role="page" id="add" data-id="charInfo" data-theme="a">
+
+	<div data-role="header" id="addHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" class="ui-btn-active" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+         <img src="img/heading.png" alt="Heading Image" width="100%" />
+   
+    <div data-role="content">
+    
+        
+            
+        <!--Start Form Entry-->
+        
+        <form action="" method="post" id="charForm" data-ajax="false" data-role="listview" data-inset="true">
+        
+                
+            <div data-role="fieldcontain">
+                <label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name"><br /><p style="font-size: 14px;" class="minitext">Ex: Conan or Conan the Barbarian</p>
+            </div>
+            
+            <div data-role="fieldcontain" id="select_race">
+                <label for="char_race">Race: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Dwarf</p>            
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label for="char_gen">Gender: <span class="minitext">*required</span></label></span>
+
+                <!--Label for easy assignment for the gender field-->
+                <label for="boy">Boy</label>
+                <input type="radio" id="boy" value="Boy" name="char_gen"> 
+    
+                <label for="girl">Girl</label>            
+                <input type="radio" id="girl" value="Girl" name="char_gen">
+                <br /><p style="font-size: 14px;" class="minitext">Please select one</p>
+            </div>
+            
+            <div data-role="fieldcontain" id="select_class">
+                <label for="char_class">Class: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Wizard</p>
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label for="char_age">Age: </label><input type="number" placeholder="age in numbers..." id="char_age" name="char_age">
+                <br/><p style="font-size: 14px;" class="minitext">Please enter only the number. Ex: 23</p>
+			</div>
+                        
+            <input type="hidden" value="active" id="status">
+        	
+            <div data-role="fieldcontain">
+                <!--added size attributes to fill a standard iPhone screen and make it look pretty-->
+                <label for="char_desc">Brief Description: </label>
+                <textarea id="char_desc" name="char_desc"></textarea>
+                <br /><p style="font-size: 14px;" class="minitext">Please describe your character.<br />Items like haircolor, height, or background story would<br />go here.</p>
+            </div>
+                            
+                    
+            
+                <!--Submit button outside fieldset box for emphasis-->
+                <br /><input type="submit" value="Add Character" id="charSubmitBtn"><br />
+                
+                <!--added break tags for spacing without using paragraph tags-->
+                <br /><br />
+       
+        </form>
+        
+    </div>
+
+</div>   
+
+
+<div data-role="page" id="news" data-theme="a">
+
+	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+        
+    <img src="img/heading.png" alt="Heading Image" width="100%" />
+    
+    <div data-role="content">
+    
+        <ul data-role="listview" data-inset="true" data-theme="a">
+        
+        	<li data-role="list-divider" data-theme="a"><h2>Character Sheet Changelog</h2></li>
+            <li>Bothar created!</li>
+            <li>Yancy edited!</li>
+            <li>Yancy created!</li>
+            <li>Randall deleted!</li>
+            <li>Randall created!</li>
+            <li>Bothar created!</li>
+            <li>DATABASE CLEARED!!</li>
+            
+        </ul>        
+    
+    </div>
+          
+</div>
+   
+
+<div data-role="page" id="about" data-theme="a">
+
+	<div data-role="header" id="aboutHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+        <img src="img/heading.png" alt="Heading Image" width="100%" />
+        
+    <div data-role="content">
+            
+        <ul data-role="listview">
+        
+        	<li><a href="#home">Go back Home</a></li>
+            <li><a href="../bronze/index.html" rel="external">Bronze App</a></li>
+            <li><a href="../gold/index.html">Gold App</a></li>
+            <li><a href="http://github.com" rel="external">GitHub</a></li>
+		
+        </ul>
+        
+        <p>**All images provided through the fankit GPL license <a href="http://www.wizards.com" rel="external">Wizard of the Coast &reg;</a></p>
+    
+    </div>
+    
+ </div>
+ 
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/json.js"></script>
+    <script type="text/javascript" src="js/newmain.js"></script>
+
+    
+</body>
+
 </html>
+    
+    
+    	
